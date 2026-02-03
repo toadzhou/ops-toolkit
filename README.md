@@ -11,7 +11,13 @@
 ## 🐳 快速使用
 ```bash
 # 进入交互式环境
-docker run -it --rm toadzhou/ops-toolkit:latest bash
+docker run -it --rm \
+-v ~/.kube:/root/.kube \
+-v ~/.helm:/root/.config/helm \
+-v $(pwd):/work \
+toadzhou/ops-toolkit:latest \
+bash
 
 # 在 CI/CD 中作为 Base 镜像
 # FROM toadzhou/ops-toolkit:latest
+```
