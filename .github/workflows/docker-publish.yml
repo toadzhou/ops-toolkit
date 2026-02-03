@@ -3,6 +3,7 @@ name: Build and Push Docker Image
 on:
   push:
     branches: [ "main" ]
+    tags: [ "v*" ]
 
 jobs:
   build-and-push:
@@ -24,4 +25,4 @@ jobs:
           push: true
           tags: |
             ${{ secrets.DOCKERHUB_USERNAME }}/ops-toolkit:latest
-            ${{ secrets.DOCKERHUB_USERNAME }}/ops-toolkit:${{ github.run_number }}
+            ${{ secrets.DOCKERHUB_USERNAME }}/ops-toolkit:${{ github.ref_name }}
